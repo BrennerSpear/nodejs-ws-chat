@@ -1,12 +1,12 @@
 var WebSocketServer = require('ws').Server
-  , wss = new WebSocketServer({host:'0.0.0.0',port: 8082});
+  , wss = new WebSocketServer({host:'127.0.0.1',port: 8082});
 
 var chat = {
 	clients: new Array(),
 	
 	run: function(){
 		wss.on('connection', function(ws) {
-
+			console.log('connection has been established');
 			ws.on('message', function(message) {
 				console.log('received: %s', message);
 				chat.dispatch(ws, message);
@@ -86,6 +86,7 @@ var chat = {
 				break;
 			case '/connect':
 				var msg = param.replace(' ','').replace(/(<([^>]+)>)/ig,"");
+				console.log('dispatched connect');
 				if(msg != ''){
 					chat.registerClient(ws, msg);
 				}

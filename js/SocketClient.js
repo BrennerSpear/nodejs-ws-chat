@@ -1,4 +1,4 @@
-var wssUrl = "ws://frupii.nodechat.jit.su";
+var wssUrl = "ws://127.0.0.1:8082/";
 var socket;
 
 var cmd = {
